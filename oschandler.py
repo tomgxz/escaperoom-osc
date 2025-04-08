@@ -6,39 +6,31 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 # first position must be smaller than second position
 CONFIG:dict = {
     "pos2": {
-        "x1": 0,
-        "y1": 0,
-        "z1": 0,
-        "x2": 0,
-        "y2": 0,
-        "z2": 0,
+        "x1": 0.5845,
+        "z1": 0.0748,
+        "x2": 0.5847,
+        "z2": 0.0750,
         "valid": False,
     },
     "pos3": {
         "x1": 0,
-        "y1": 0,
         "z1": 0,
         "x2": 0,
-        "y2": 0,
         "z2": 0,
         "valid": False,
     },
     "pos4": {
         "x1": 0,
-        "y1": 0,
         "z1": 0,
         "x2": 0,
-        "y2": 0,
         "z2": 0,
         "valid": False,
     },
     "pos5": {
-        "x1": 0,
-        "y1": 0,
-        "z1": 0,
-        "x2": 0,
-        "y2": 0,
-        "z2": 0,
+        "x1": 4.5897,
+        "z1": 2.8988,
+        "x2": 4.5899,
+        "z2": 2.8990,
         "valid": False,
     }
 }
@@ -60,7 +52,7 @@ def on_recieve(*args):
     cfg = CONFIG[f"pos{pos}"]
 
 
-    if cfg['x1'] <= x <= cfg['x2'] and cfg['y1'] <= y <= cfg['y2'] and cfg['z1'] <= z <= cfg['z2']:
+    if cfg['x1'] <= x <= cfg['x2'] and cfg['z1'] <= z <= cfg['z2']:
         if cfg['valid']:
             return
         
@@ -80,7 +72,7 @@ def on_recieve(*args):
         cfg['valid'] = False
         send_message(f'/escaperoom/challenge/3/pos/{pos}/invalid')
 
-    logging.debug(f"Recieved position for {pos}: {x}, {y}, {z} - valid = {cfg}")
+    logging.debug(f"Recieved position for {pos}: {x}, {z} - valid = {cfg}")
 
 
 if __name__ == "__main__":
