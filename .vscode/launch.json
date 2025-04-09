@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "OSC Handler",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\oschandler.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
